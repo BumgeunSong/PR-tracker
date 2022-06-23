@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct IssueManager {
+protocol IssueService {
+    func getIssues(then completion: @escaping ([Issue]?) -> Void)
+}
+
+struct IssueManager: IssueService {
     
     let keyChainService: KeyChainService
     let networkService: NetworkService

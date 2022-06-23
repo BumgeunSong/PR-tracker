@@ -7,6 +7,7 @@
 
 import Foundation
 
+// 얘가 사실 stub.
 final class MockDataService {
     func getMockIssues(completion: ([Issue]?) -> Void) {
         let user1 = User(id: 0, name: "Eddy", userName: "EddySong", reposURL: "url~")
