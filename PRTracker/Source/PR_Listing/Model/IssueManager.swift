@@ -48,7 +48,7 @@ struct IssueManager: IssueService {
             }
         }
     }
-
+    
     private func getAccessToken() -> String? {
         guard let accessToken = keyChainService.load(service: "access-token", account: "github") else {
             Log.error("Access Token is not found")

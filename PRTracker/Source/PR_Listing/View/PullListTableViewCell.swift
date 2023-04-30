@@ -20,10 +20,10 @@ class PullListTableViewCell: UITableViewCell {
     }
     
     func configure(with viewModel: IssueTableCellViewModel) {
-        title.text = viewModel.title
-        content.text = viewModel.content
-        projectName.text = viewModel.projectName
-        state.text = viewModel.state
-        milestone.text = viewModel.labelList.first?.name
+        title.text = viewModel.title.value
+        content.text = viewModel.content.value
+        projectName.text = viewModel.projectName.value
+        milestone.text = viewModel.labelList.value?.first?.name.value
+        state.text = viewModel.state.value
     }
 }

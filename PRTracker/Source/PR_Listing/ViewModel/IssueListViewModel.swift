@@ -7,16 +7,14 @@
 
 import Foundation
 
-struct IssueListViewModel {
-    private let issueService: IssueService
+final class IssueListViewModel {
+    private var issueService: IssueService
     
     var issueViewModels: Observable<[IssueTableCellViewModel]?> = Observable(nil)
 
     var numberOfViewModels: Int {
         return issueViewModels.value?.count ?? 0
     }
-    
-    var issueState: IssueState = .open
     
     init(issueService: IssueService = IssueManager()) {
         self.issueService = issueService
@@ -25,6 +23,7 @@ struct IssueListViewModel {
     func searchBarTextDidChange(with text: String) {
         // TODO: SearchBarText가 바뀌면 호출되는 부분 구현
     }
+    
     
     func requestData() {
         issueService.getIssues { issues in
@@ -43,12 +42,9 @@ struct IssueListViewModel {
     }
     
     private func convertToViewModel(_ issue: Issue) -> IssueTableCellViewModel {
-        return IssueTableCellViewModel(id: issue.id,
-                                       title: issue.title,
-                                       state: issue.state,
-                                       content: issue.body ?? "No content",
-                                       projectName: issue.milestone?.title ?? "No title",
-                                       labelList: issue.labels ?? [Label(id: 999, color: "pink", name: "NoLabel")])
+        let tableCellViewModel = IssueTableCellViewModel()
+        tableCellViewModel.configureCellData(with: issue)
+        return tableCellViewModel
     }
     
     func getCellViewModel(index: Int) -> IssueTableCellViewModel? {

@@ -27,10 +27,10 @@ class IssueListViewModelTests: XCTestCase {
         // then - 이슈 목록 (데이터)을 가져왔는지 확인.
         // 데이터 갯수가 2개라면 테스트 성공
         XCTAssertEqual(sut.issueViewModels.value?.count, 2)
-        XCTAssertEqual(sut.issueViewModels.value?[0].title, "PR 제목입니당")
-        XCTAssertEqual(sut.issueViewModels.value?[0].content, "작업 내용은 다음과 같습니다,,\n클릭해서 봐주세요..")
-        XCTAssertEqual(sut.issueViewModels.value?[1].title, "PR 제목입니당2")
-        XCTAssertEqual(sut.issueViewModels.value?[1].content, "작업 내용은 다음과 같습니다,,\n클릭해서 봐주세욤")
+        XCTAssertEqual(sut.issueViewModels.value?[0].title.value, "PR 제목입니당")
+        XCTAssertEqual(sut.issueViewModels.value?[0].content.value, "작업 내용은 다음과 같습니다,,\n클릭해서 봐주세요..")
+        XCTAssertEqual(sut.issueViewModels.value?[1].title.value, "PR 제목입니당2")
+        XCTAssertEqual(sut.issueViewModels.value?[1].content.value, "작업 내용은 다음과 같습니다,,\n클릭해서 봐주세욤")
     }
     
     func test_viewModel_should_get_no_data_when_issueManager_get_zero_issues() {
